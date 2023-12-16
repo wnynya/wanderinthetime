@@ -1,0 +1,13 @@
+#gallery {
+  background: black;
+}
+#gallery .wrapper {
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  gap: 1rem 1rem;
+}
+#gallery .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

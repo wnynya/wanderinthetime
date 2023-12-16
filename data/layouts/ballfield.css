@@ -1,0 +1,66 @@
+body {
+  background: var(--bg);
+}
+
+#ballfield {
+  width: 100%;
+  height: 100vh;
+  height: calc((var(--vh, 1vh) * 100));
+  top: 0;
+  left: 0;
+  position: fixed;
+}
+#ballfield .field {
+  width: 100%;
+  height: 100vh;
+  height: calc((var(--vh, 1vh) * 100));
+  overflow: hidden;
+}
+#ballfield .ball {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: 10000px;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+#ballfield .ball:active {
+  cursor: grabbing;
+}
+#ballfield .ball .circle {
+  border-radius: inherit;
+  background-color: var(--fg);
+}
+#ballfield .ball .shadow {
+  width: 30px;
+  height: 30px;
+  z-index: 190000;
+  border-radius: inherit;
+}
+#ballfield .ball.no1 .circle {
+  background-color: var(--yellow);
+}
+#ballfield .ball.no2 .circle {
+  background-color: var(--blue);
+}
+#ballfield .ball.no3 .circle {
+  background-color: var(--red);
+}
+#ballfield.real .ball.no1 .circle {
+  background-image: url('/resource/image/ball_yellow.png');
+  background-size: contain;
+  background-color: transparent;
+}
+#ballfield.real .ball.no2 .circle {
+  background-image: url('/resource/image/ball_blue.png');
+  background-size: contain;
+  background-color: transparent;
+}
+#ballfield.real .ball.no3 .circle {
+  background-image: url('/resource/image/ball_red.png');
+  background-size: contain;
+  background-color: transparent;
+}

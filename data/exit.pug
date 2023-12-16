@@ -1,0 +1,64 @@
+doctype html
+head
+
+  title WANDERINTHETIME.COM
+
+  style.
+    body {
+      margin: 0;
+    }
+    main {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+    .layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    #title {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    #title > img {
+      width: 100%;
+    }
+    #enter {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #enter > a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: calc((50vw + 50vh) / 2);
+      height: calc(((50vw + 50vh) / 2) / 2);
+      border-radius: 100% 100%;
+      overflow: hidden;
+      box-shadow: inset 0 0 0 calc(((50vw + 50vh) / 2) / 45) black;
+    }
+    #enter > a > img {
+      width: 60%;
+    }
+
+body
+
+  main
+
+    section#data 
+      p [EXIT] [DEBUG]
+      p!= `보낸 시간: ${data.spend}`
+      p!= `Visit Pages: ${data.pages}`
+      p!= `mouse clicks: ${events.mouse.clicks}`
+      p!= `mouse move distance: ${events.mouse.move_distance}px`
+      p!= `mouse enter: ${events.mouse.enter}`
+      p!= `mouse leave: ${events.mouse.leave}`
+      p!= `keyboard pressed: ${events.keyboard.pressed}`

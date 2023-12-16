@@ -1,0 +1,108 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable-dynamic-subset.css');
+
+body {
+  font-family: 'Pretendard Variable', sans-serif;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.grid.wrapper {
+  display: grid;
+  grid-template-columns: repeat(18, 4rem);
+  gap: 0 1rem;
+}
+
+#nav {
+  width: 100%;
+  height: 6rem;
+  color: white;
+  font-size: 11pt;
+}
+#nav > .wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+#nav > .search {
+  background: black;
+}
+#nav > .search > .logo {
+  font-size: 16pt;
+  font-weight: 700;
+  margin-right: 2rem;
+}
+#nav > .search > .deliver {
+  margin-right: 2rem;
+}
+#nav > .search > .deliver > .to {
+  font-size: 9pt;
+  color: rgb(180, 180, 180);
+}
+#nav > .search > .deliver > .country {
+  font-weight: 700;
+}
+#nav > .search > .searchbox {
+  border-radius: 0.25rem;
+  overflow: hidden;
+  height: 2.5rem;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+#nav > .search > .searchbox > input {
+  height: 100%;
+  width: calc(100% - 2.5rem - 1px - 2rem);
+  padding: 0 1rem;
+  margin: 0;
+  border: none;
+  outline: none;
+  border-right: solid 1px gray;
+  font-size: 14pt;
+}
+#nav > .search > .searchbox > button {
+  height: 100%;
+  width: 2.5rem;
+  margin: 0;
+  border: none;
+  background: orange;
+  cursor: pointer;
+}
+#nav > .menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: rgb(35, 47, 62);
+  height: 1.5rem;
+}
+#nav > .menu a {
+  font-size: 11pt;
+  margin-right: 2rem;
+}
+
+#content-item {
+  padding-top: 3rem;
+}
+#content-item > .wrapper {
+  padding-bottom: 1rem;
+  border-bottom: solid 1px gray;
+}
+#content-item .image {
+  grid-column: 1/8;
+  height: 34rem;
+  background: rgb(230, 230, 230);
+}
+#content-item .desc {
+  grid-column: 8/16;
+}
+#content-item .desc > .name {
+  font-size: 18pt;
+  padding-bottom: 0.5rem;
+  border-bottom: solid 1px gray;
+}
+#content-item .buy {
+  grid-column: 16/19;
+}

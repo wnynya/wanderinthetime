@@ -1,0 +1,40 @@
+:root {
+  --bg: white;
+  --fg: black;
+  --ff: 'Courier New', Courier, monospace;
+
+  --title-ff: var(--ff);
+  --title-fs: 3rem;
+  --title-fw: 900;
+  --title-fg: black;
+
+  --content-ff: var(--ff);
+  --content-fs: 1rem;
+  --content-fw: 400;
+  --content-fg: black;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--ff);
+  padding: 1rem;
+}
+
+.wrapper {
+  max-width: 46rem;
+}
+
+nav > .wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+nav .right {
+  text-align: right;
+}
+
+p {
+  font-size: 12pt;
+  line-height: 14pt;
+  min-height: 14pt;
+}

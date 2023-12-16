@@ -1,0 +1,34 @@
+{
+  "name": "amuject-wanderinthetime",
+  "version": "1.0.0",
+  "author": "Wany <sung@wany.io> (https://wany.io)",
+  "main": "src/app.mjs",
+  "scripts": {
+    "start": "node src/app.mjs -p 29282",
+    "dev": "nodemon src/app.mjs -p 39282 -dev"
+  },
+  "dependencies": {
+    "@wanyne/express-middlewares": "^0.1.0",
+    "@wnynya/crypto": "^0.1.2",
+    "@wnynya/logger": "^0.1.3",
+    "@wnynya/request": "^0.9.1",
+    "express": "^4.18.2",
+    "jsdom": "^22.1.0",
+    "pug": "^3.0.2"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "./config",
+      "./src/**/*",
+      "./data/**/*"
+    ],
+    "ignore": [
+      "./src/public",
+      "./data/contents",
+      "./data/images",
+      "./data/raw",
+      "./data/sessions.json"
+    ],
+    "ext": "js,mjs,json,html,pug,css"
+  }
+}

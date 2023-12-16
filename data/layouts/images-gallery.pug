@@ -1,0 +1,7 @@
+section#gallery
+  .wrapper 
+    each index, i in links
+      if i == 30
+        - break
+      a.cell.image(href=`/${index.site}`)
+        img(src=`/resources/${index.site}${index.site}/image/image.png`)

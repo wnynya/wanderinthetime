@@ -1,0 +1,37 @@
+section#menu
+  .grid.wrapper
+    .cell.left 
+      a(href=`/${links[0].site}`) Hi! Unknown
+      a(href=`/${links[1].site}`) Daily Deals
+      a(href=`/${links[2].site}`) Help & Contact
+    .cell.right
+      a(href=`/${links[3].site}`) Gift Cards 
+      a(href=`/${links[4].site}`) Sell
+
+section#search
+  .grid.wrapper
+    .cell.logo 
+      h2!= site.toUpperCase()
+    .cell.searchbox 
+      .input 
+        span(class="material-symbols-outlined") search
+        input(type="text" placeholder="Search for nothing" autocomplete="off" spellcheck="false")
+      button Search
+
+section#content-item
+  .grid.wrapper
+
+    .cell.image 
+      img(src=`/resources/${links[0].site}/image/image.png`)
+
+    .cell.desc 
+      .name!= title
+      .text!= content
+
+    .cell.buy
+
+section#content-list
+  .wrapper
+
+footer#footer 
+  .wrapper

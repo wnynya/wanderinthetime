@@ -1,0 +1,32 @@
+nav#nav
+  .wrapper
+    .cell#nav-logo 
+      a(href="")
+        span THERE IS NO TIMES
+
+section#title
+  .wrapper 
+    .cell#title-cell
+      h1!= title
+
+section#content
+  .wrapper 
+    .cell#content-info 
+      p.author Aaaaaaa Aaa
+      p.date Octover 09 2023
+      p.readingtime
+    .cell#content-article
+      article
+        img(src=`/resources/${links[0].site}/image/image.png`)
+        != content
+
+section#index
+  .wrapper#index-label
+    label More Articles
+  .wrapper#index-articles
+    each index, i in links
+      if i == 6
+        - break
+      a.cell.art(href=`/${index.site}`)!= index.title
+footer#footer 
+  .wrapper

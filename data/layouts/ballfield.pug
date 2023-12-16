@@ -1,0 +1,12 @@
+
+main#ballfield
+  .layer.background
+  .layer.field
+
+each index, i in links
+  if i == 9
+    - break
+  script.
+    window.addEventListener('load', () => {
+      newBall(`/#{index.site}`)
+    });
