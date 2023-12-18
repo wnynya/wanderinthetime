@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable-dynamic-subset.css');
+
+:root {
+  --bg: white;
+  --fg: black;
+  --fgl: rgb(210, 210, 210);
+
+  --ff: 'PT Serif', 'Noto Serif KR', serif;
+
+  --title-ff: 'EB Garamond', 'Noto Serif KR', serif;
+  --title-fs: 2.75rem;
+  --title-fw: 700;
+  --title-fg: var(--fg);
+
+  --content-ff: 'PT Serif', 'Noto Serif KR', serif;
+  --content-fs: 1.1rem;
+  --content-fw: 400;
+  --content-fg: var(--fg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--ff);
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrapper {
+  width: 60rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2.5rem;
+  background: var(--bg);
+  border-bottom: solid 1px var(--fgl);
+  z-index: 10;
+}
+#nav > .row {
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+#logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 1rem;
+  font-family: 'UnifrakturCook', 'Noto Serif KR', serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: var(--fg);
+  text-decoration: none;
+}
+
+#main .wrapper {
+  background: var(--bg);
+}
+#content {
+  width: 60rem;
+  padding-top: 2rem;
+  padding-bottom: 6rem;
+}
+
+#title {
+  padding-top: 12rem;
+  width: 40rem;
+  padding-left: 10rem;
+  padding-right: 10rem;
+  font-family: var(--title-ff);
+  font-size: var(--title-fs);
+  font-weight: var(--title-fw);
+  line-height: 120%;
+  letter-spacing: -0.07rem;
+  text-align: center;
+}
+
+#info {
+  padding-top: 0.5rem;
+  text-align: center;
+}
+#info .row {
+  display: inline-flex;
+}
+
+#image img {
+  width: 100%;
+  height: 30rem;
+  object-fit: cover;
+  padding-bottom: 1rem;
+}
+#text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#text p {
+  font-family: var(--content-ff);
+  font-size: var(--content-fs);
+  font-weight: var(--content-fw);
+  line-height: 180%;
+  text-align: left;
+  width: 40rem;
+  padding-left: 10rem;
+  padding-right: 10rem;
+}
+
+#list {
+  width: 40rem;
+  padding-left: 10rem;
+  padding-right: 10rem;
+  padding-bottom: 6rem;
+}
+
+#list label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--fg);
+  padding: 0.5rem 0;
+}
+#list .element {
+  line-height: 120%;
+  padding: 0.75rem 0;
+  cursor: pointer;
+  border-bottom: solid 1px var(--fgl);
+}
+#list .element:last-child {
+  border-bottom: none;
+}
+#list .element img {
+  width: 6rem;
+  height: 4rem;
+  object-fit: cover;
+}
+#list .element p {
+  padding-left: 1rem;
+  width: calc(100% - 7rem);
+  font-family: var(--title-ff);
+  font-size: 1.25rem;
+  color: var(--fg);
+  text-decoration: underline var(--fg);
+}
+
+#footer {
+  width: 100%;
+  height: 12rem;
+  background: var(--fg);
+}

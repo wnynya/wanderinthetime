@@ -1,0 +1,59 @@
+section#nav
+  .wrapper.search 
+    .logo 
+      h2!= site.toUpperCase()
+    .deliver 
+      p.to Deliver to 
+      p.country Nowhere
+    form.searchbox(onsubmit="event.preventDefault();")
+      input#input-search(type="text" placeholder="Type something..." autocomplete="off" spellcheck="false")
+      button#button-search
+        span(class="material-symbols-outlined") search
+    .cart 
+
+  .wrapper.menu
+    a(href=`/${links[10].site}`) Today's Deals 
+    a(href=`/${links[11].site}`) Customer Service 
+    a(href=`/${links[12].site}`) Registry 
+    a(href=`/${links[13].site}`) Gift Cards 
+    a(href=`/${links[14].site}`) Sell
+
+section#main
+  .wrapper.row
+
+    #image 
+      img(src=`/resources/${site}/image/image.png`)
+
+    #desc 
+      #title!= title
+      #text!= content
+
+    #buys
+      .card
+        .price!= "$" + (Math.floor(random * 100000) / 100.0).toFixed(2)
+        .shipping 
+          p No Import Fees 
+          p & Free Shipping
+          br
+          p!= "Delivery: " + datetime.toDateString()
+        .deliver Deliver to Nowhere
+        a.addtocart(href=`/${links[15].site}`)
+          button Add to cart
+        a.buynow(href=`/${links[16].site}`)
+          button Buy now
+
+section#list
+  .wrapper
+
+    label!= "More items"
+    
+    .products
+      each index, i in links
+        if i == 7
+          - break
+        a(href=`/${index.site}`).element
+          img(src=`/resources/${index.site}/image/image.png`)
+          .title!= index.title
+          .price!= "$" + (Math.floor(index.random * 100000) / 100.0).toFixed(2)
+
+footer#footer

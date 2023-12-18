@@ -1,0 +1,32 @@
+section#nav
+  .wrapper.row  
+    a#logo(href="") There Are No Times
+
+section#main
+  .wrapper
+
+    #title!= title
+
+    #info
+      .row
+        .name!= author
+        .span &nbsp;·&nbsp;
+        .datetime!= datetime.toDateString()
+
+    #content
+      
+      #image
+        img(src=`/resources/${site}/image/image.png`)
+
+      #text!= content
+
+    #list 
+      label!= "More Articles"
+      each index, i in links
+        if i == 6
+          - break
+        a(href=`/${index.site}`).element.row
+          img(src=`/resources/${index.site}/image/image.png`)
+          p!= index.title
+
+section#footer

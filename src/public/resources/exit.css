@@ -1,0 +1,106 @@
+#exit-confirm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#exit-confirm h1 {
+  font-size: 10rem;
+  font-weight: 700;
+  font-style: italic;
+  transform: rotate(-13deg);
+  line-height: 80%;
+  padding-top: 12rem;
+  margin: 0;
+  margin-bottom: 3.5rem;
+}
+#exit-confirm h1 span {
+  display: inline-block;
+}
+#exit-confirm h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0;
+}
+#exit-confirm h2.m1 {
+  transform: rotate(-8deg);
+  margin-bottom: 2rem;
+}
+#exit-confirm h2.m2 {
+  transform: rotate(-4deg);
+  margin-bottom: 2rem;
+}
+
+#exit-confirm .value {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+#exit-confirm .controls {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+}
+#exit-confirm .controls > .button {
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  padding: 0 1.5rem 0 1.25rem;
+  border-radius: 10rem;
+  border: solid 2px black;
+  background: white;
+  color: black;
+  cursor: pointer;
+  margin: 0 0.5rem;
+}
+#exit-confirm .controls > .button:hover {
+  background: black;
+  color: white;
+}
+#exit-confirm .controls > .button:active {
+  transform: scale(0.97);
+}
+
+#button-exit {
+  margin-top: 3rem;
+  font-size: 3rem;
+  font-weight: 700;
+  border-radius: 100% 100%;
+  border: solid 7px rgb(255, 50, 50);
+  height: 10rem;
+  padding: 0 5rem;
+  background: white;
+  cursor: pointer;
+  color: rgb(255, 50, 50);
+  transform: rotate(4deg);
+  transition: transform 0.1s ease-out;
+}
+#button-exit:hover {
+  transform: rotate(4deg) scale(1.02);
+}
+#button-exit:active {
+  transform: rotate(4deg) scale(0.98);
+}
+
+#button-back {
+  margin-top: 3rem;
+  font-size: 3rem;
+  font-weight: 700;
+  border-radius: 100% 100%;
+  border: solid 7px rgb(50, 180, 180);
+  height: 10rem;
+  padding: 0 5rem;
+  background: white;
+  cursor: pointer;
+  color: rgb(50, 180, 180);
+  transform: rotate(8deg);
+  transition: transform 0.1s ease-out;
+}
+#button-back:hover {
+  transform: rotate(8deg) scale(1.02);
+}
+#button-back:active {
+  transform: rotate(8deg) scale(0.98);
+}

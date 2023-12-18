@@ -9,6 +9,7 @@ const __dirname = path.dirname(__filename);
 import Crypto from '@wnynya/crypto';
 import pug from 'pug';
 import { JSDOM } from 'jsdom';
+import randomname from 'node-random-name';
 
 const index = fs
   .readFileSync(path.resolve(__dirname, `../data/index.pug`))
@@ -86,61 +87,67 @@ class Site {
     const layoutKeys = Object.keys(layouts);
     const layoutName = layoutKeys[this.int % layoutKeys.length];
     const layout = layouts[layoutName];
-    const content = this.content();
-    const title = content.title;
 
-    const links = [];
+    let data = this.data();
+
+    data.links = [];
     for (let i = 1; i <= 100; i++) {
       const site = this.next(i);
-      const siteContent = site.content();
-      links.push({
-        site: site.value,
-        title: siteContent.title,
-        content: siteContent.content,
-      });
+      data.links.push(site.data());
     }
 
-    let data = {
-      site: this.value,
-      title: title,
-      content: content.content,
-      links: links,
-    };
-
-    if (layoutName == 'random') {
-      data = this.random(data);
-    }
-
-    let exit = null;
+    let exit = false;
 
     if (req.session.get('pages') > 10 && Math.random() < 0.1) {
-      exit = this.exit();
+      exit = true;
+    }
+
+    let content = '';
+    let contentBlocks = data.content.split(' ');
+    for (let i = 0; i < contentBlocks.length; i++) {
+      let block = contentBlocks[i];
+      if (!block.match(/<|>/) && block.length >= 6) {
+        if (this.random(i) < 0.1) {
+          if (Math.random() < 0.2) {
+            content += `<a href="/room/exit">${block}</a>`;
+          } else {
+            content += `<a href="/${
+              this.next().from(this.value + i).value
+            }">${block}</a>`;
+          }
+        } else {
+          content += block;
+        }
+      } else {
+        content += block;
+      }
+      content += ' ';
+    }
+    data.content = content;
+
+    if (layoutName == '00-random') {
+      data = this.randomLayout(data);
     }
 
     const html = pug.render(index, {
-      title: title,
+      title: data.title,
       style: layout.css + this.style_distortion(),
       headscript: headscript,
       content: pug.render(layout.pug, data),
       script: layout.mjs,
-      exit: exit,
     });
     return html;
   }
 
   style_distortion() {
-    if (this.int % 100 > 50) {
-      return '';
-    }
-
     const _this = this;
 
     let style = '';
     function s(c) {
       style += `${c} {`;
     }
-    function p(k, v, p) {
-      if (_this.int % 100 < p) {
+    function p(k, v, p, s) {
+      if (_this.random(s) % 100 < p) {
         style += `  ${k}: ${v};`;
       }
     }
@@ -148,26 +155,44 @@ class Site {
       style += `}`;
     }
 
-    s(':root');
-    p('--bg', this.color(), 50);
-    p('--title-fs', '1rem', 50);
-    p('--title-fs', '15rem', 3);
-    p('--content-fs', '3rem', 50);
-    p('--content-fs', '4rem', 10);
-    e();
+    let value = Math.floor(this.random() * 100);
+    console.log(value);
+    if (0 <= value && value < 50) {
+      return '';
+    } else if (50 <= value && value < 80) {
+      s(':root');
+      p('--bg', this.next(1).color(), 25, 1);
+      p('--fg', this.next(2).color(), 25, 2);
+      p('--fgl', this.next(3).color(), 25, 3);
+      p('--th', this.next(4).color(), 25, 4);
+      p('--title-fs', `${Math.max(0.5, this.random() * 6)}rem`, 25, 5);
+      p('--content-fs', `${Math.max(0.5, this.random() * 4 - 1)}rem`, 25, 6);
+      e();
 
-    s('body');
-    p('transform', `rotate(${(this.int % 20) - 5}deg)`, 10);
-    e();
+      s('body');
+      p('transform', `rotate(${(this.int % 10) - 5}deg)`, 10, 20);
+      e();
+    } else if (80 <= value && value <= 100) {
+      s(':root');
+      p('--fg', this.next(2).color(), 2, 2);
+      p('--fgl', this.next(3).color(), 2, 3);
+      p('--title-fs', `${Math.max(0.5, this.random() * 10)}rem`, 5, 5);
+      p('--content-fs', `${Math.max(0.5, this.random() * 3)}rem`, 5, 6);
+      e();
 
-    s('#content-article');
-    p('filter', `blur(3px)`, 30);
-    e();
+      s('body');
+      p('transform', `rotate(${(this.int % 10) - 5}deg)`, 3, 20);
+      e();
+
+      s('#text');
+      p('filter', `blur(3px)`, 5, 21);
+      e();
+    }
 
     return style;
   }
 
-  random(data) {
+  randomLayout(data) {
     data.title = this.value;
     data.layers = [];
 
@@ -285,6 +310,30 @@ class Site {
     this.int = parseInt(this.value, 36);
     this.left = parseInt(this.value.substring(0, 2), 36);
     this.right = parseInt(this.value.substring(2, 4), 36);
+  }
+
+  data() {
+    let title = this.content().title;
+    let content = this.content().content;
+    let image = this.resources_image();
+    let author = randomname({ seed: this.value });
+    let datetime = new Date(
+      Math.floor(Math.floor(this.random(1) * 5000000000000))
+    );
+    return {
+      site: this.value,
+      random: this.random(1),
+      title: title,
+      content: content,
+      image: image,
+      author: author,
+      datetime: datetime,
+    };
+  }
+
+  random(n = 1) {
+    const next = this.next(n);
+    return (next.int % 10000) / 10000.0;
   }
 
   content() {

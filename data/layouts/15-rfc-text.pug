@@ -1,0 +1,29 @@
+p Documents Index
+br
+br
+br
+p 
+  a(href=`/${site}`)!= "1. " + title
+  span &nbsp;< CURRENT DOCUMENT
+each index, i in links
+  if i == 8
+    - break
+  p 
+    a(href=`/${index.site}`)!= (i + 2) + ". " + index.title
+br
+br
+br
+p --------------------------------------------------------------------------------
+br
+br
+br
+#title!= title
+br
+#info!= author + ", " + datetime.toDateString()
+br
+br
+br
+#content!= content
+br
+br
+br

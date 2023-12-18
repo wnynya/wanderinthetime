@@ -21,6 +21,10 @@ const exit = fs
   .readFileSync(path.resolve(__dirname, '../data/exit.pug'))
   .toString();
 
+const escaped = fs
+  .readFileSync(path.resolve(__dirname, '../data/escaped.pug'))
+  .toString();
+
 router.get('/', (req, res) => {
   req.session.destroy();
 
@@ -37,6 +41,7 @@ router.get('/', (req, res) => {
       pressed: 0,
     },
   });
+  req.session.set('spent', 0);
 
   res.send(pug.render(enter, {}));
 });
@@ -52,6 +57,11 @@ router.post('/api/events', (req, res) => {
   events.keyboard.pressed += data.keyboard.pressed;
 
   req.session.set('events', events);
+  res.end();
+});
+
+router.post('/api/spent', (req, res) => {
+  req.session.set('spent', req.body.spent * 1);
   res.end();
 });
 
@@ -89,7 +99,16 @@ router.get('/:key', (req, res) => {
   }
 });
 
-router.get('/exit/:key', (req, res) => {
+router.get('/room/exit', (req, res) => {
+  if (!req.session.get('entered')) {
+    res.redirect('/');
+    return;
+  } else {
+    res.send(pug.render(exit));
+  }
+});
+
+router.get('/room/escaped', (req, res) => {
   if (!req.session.get('entered')) {
     res.redirect('/');
     return;
@@ -98,31 +117,36 @@ router.get('/exit/:key', (req, res) => {
       entered: req.session.data.entered,
       pages: req.session.data.pages,
     };
-    let time = '';
-    let spend = Date.now() - data.entered;
-    if (spend > 1000 * 60 * 60 * 24) {
-      let i = Math.floor(spend / (1000 * 60 * 60 * 24));
-      time += `${i}일 `;
-      spend -= i * 1000 * 60 * 60 * 24;
+    data.spend = Math.floor((Date.now() - data.entered) / 1000);
+    data.spent = req.session.data.spent;
+    function renderSpent(spent) {
+      let text = '';
+      let t = spent;
+      if (t >= 86400) {
+        let d = Math.floor(t / 86400);
+        t -= d * 86400;
+        text += `<span>${d} Day${d > 1 ? 's' : ''} </span>`;
+      }
+      if (t >= 3600) {
+        let h = Math.floor(t / 3600);
+        t -= h * 3600;
+        text += `<span>${h} Hour${h > 1 ? 's' : ''} </span>`;
+      }
+      if (t >= 60) {
+        let m = Math.floor(t / 60);
+        t -= m * 60;
+        text += `<span>${m} Minute${m > 1 ? 's' : ''} </span>`;
+      }
+      if ((t > 0 && spent > 0) || spent == 0) {
+        let s = t;
+        text += `<span>${s} Second${s > 1 ? 's' : ''}</span>`;
+      }
+      return text;
     }
-    if (spend > 1000 * 60 * 60) {
-      let i = Math.floor(spend / (1000 * 60 * 60));
-      time += `${i}시간 `;
-      spend -= i * 1000 * 60 * 60;
-    }
-    if (spend > 1000 * 60) {
-      let i = Math.floor(spend / (1000 * 60));
-      time += `${i}분 `;
-      spend -= i * 1000 * 60;
-    }
-    if (spend > 1000) {
-      let i = Math.floor(spend / 1000);
-      time += `${i}초 `;
-      spend -= i * 1000;
-    }
-    data.spend = time;
+    data.textspend = renderSpent(data.spend);
+    data.textspent = renderSpent(data.spent);
     res.send(
-      pug.render(exit, {
+      pug.render(escaped, {
         data: data,
         events: req.session.get('events'),
       })

@@ -1,0 +1,36 @@
+section#nav
+  .wrapper.row  
+    a#logo(href="")!= site.toUpperCase() + " NEWS"
+
+  .line
+
+section#main
+  .wrapper.row 
+
+    #content
+
+      #title!= title
+
+      #info
+        .datetime!= datetime.toDateString()
+        .author.row
+          .img
+          .name!= author
+      
+      #image
+        img(src=`/resources/${site}/image/image.png`)
+
+      #text!= content
+
+    #sidebar
+
+      #list 
+        label!= site + " HEADLINES"
+        each index, i in links
+          if i == 6
+            - break
+          a(href=`/${index.site}`).element.row
+            p!= index.title
+            img(src=`/resources/${index.site}/image/image.png`)
+
+section#footer

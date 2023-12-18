@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+
+:root {
+  --bg: white;
+  --fg: black;
+  --ff: 'Courier Prime', 'Courier New', Courier, monospace;
+
+  --title-ff: var(--ff);
+  --title-fs: 1.25rem;
+  --title-fw: 400;
+  --title-fg: var(--fg);
+
+  --content-ff: var(--ff);
+  --content-fs: 1rem;
+  --content-fw: 400;
+  --content-fg: var(--fg);
+}
+
+body {
+  background: var(--bg);
+  padding: 1rem;
+  width: 80ch;
+  font-family: var(--content-ff);
+  font-size: var(--content-fs);
+  font-weight: var(--content-fw);
+}
+main * {
+  color: var(--content-fg);
+  font-family: var(--content-ff);
+  font-size: var(--content-fs);
+  font-weight: var(--content-fw);
+  line-height: 120%;
+  word-break: break-all;
+}
+main a {
+  color: blue;
+}

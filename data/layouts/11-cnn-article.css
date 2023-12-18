@@ -1,0 +1,148 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable-dynamic-subset.css');
+
+:root {
+  --bg: white;
+  --fg: black;
+  --fgl: rgb(210, 210, 210);
+  --th: rgb(210, 0, 0);
+
+  --ff: 'Pretendard Variable', sans-serif;
+
+  --title-ff: var(--ff);
+  --title-fs: 2.75rem;
+  --title-fw: 700;
+  --title-fg: var(--fg);
+
+  --content-ff: var(--ff);
+  --content-fs: 1.1rem;
+  --content-fw: 400;
+  --content-fg: var(--fg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--ff);
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrapper {
+  width: 80rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2.5rem;
+  background: var(--fg);
+  z-index: 10;
+}
+#nav > .row {
+  height: 100%;
+  align-items: center;
+}
+#logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--bg);
+  background: var(--th);
+  text-decoration: none;
+}
+
+#main {
+  padding-top: 4.5rem;
+}
+#content {
+  width: 60rem;
+  padding-top: 2rem;
+  padding-bottom: 6rem;
+}
+#sidebar {
+  width: 17rem;
+  padding-top: 2rem;
+  padding-bottom: 6rem;
+}
+
+#title {
+  width: 60rem;
+  font-family: var(--title-ff);
+  font-size: var(--title-fs);
+  font-weight: var(--title-fw);
+  line-height: 120%;
+  letter-spacing: -0.07rem;
+}
+#info {
+  padding-top: 1.75rem;
+  padding-bottom: 0.25rem;
+  justify-content: flex-start;
+}
+
+#image img {
+  width: 100%;
+  height: 30rem;
+  object-fit: cover;
+}
+#text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#text p {
+  font-family: var(--content-ff);
+  font-size: var(--content-fs);
+  font-weight: var(--content-fw);
+  line-height: 180%;
+  text-align: left;
+  width: 40rem;
+}
+
+#list label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--fg);
+  padding: 0.5rem 0;
+  border-top: solid 1px var(--fgl);
+}
+#list .element {
+  line-height: 120%;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  border-bottom: solid 1px var(--fgl);
+}
+#list .element img {
+  width: 6rem;
+  height: 4rem;
+  object-fit: cover;
+}
+#list .element p {
+  padding-left: 0.5rem;
+  width: calc(100% - 6.5rem);
+  color: var(--fg);
+  text-decoration: underline var(--fg);
+}
+
+#footer {
+  width: 100%;
+  height: 12rem;
+  background: var(--fg);
+}

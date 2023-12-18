@@ -1,0 +1,29 @@
+section#nav
+  .wrapper.row
+
+    #logo 
+      .site!= site.toUpperCase()
+      .message The Free Delusion
+
+    #search
+      form.searchbox(onsubmit="event.preventDefault();")
+        span(class="material-symbols-outlined") search
+        input#input-search(type="text" placeholder="Search Nothing..." autocomplete="off" spellcheck="false")
+        button#button-search Search
+
+section#main 
+  .wrapper.row
+
+    #sidebar 
+
+    #content  
+      #title!= title
+
+      #contentmenu 
+
+        .message From Nowhere, the free delusion
+
+      #text!= content
+
+section#footer
+  .wrapper

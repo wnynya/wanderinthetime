@@ -1,0 +1,32 @@
+doctype html
+head
+
+  link(href="/resources/escaped.css" rel="stylesheet")
+
+  title WANDERINTHETIME
+
+body
+
+  main#escaped
+
+    h1
+      span YOU FOUND 
+      span THE EXIT!
+
+    h2.m1!= `You felt you spent <span>${data.textspent}</span> here.`
+
+    h2.m2!= `The actual time spent is <span>${data.textspend}</span>.`
+
+    h2.m3 Can you feel a flow of time?
+
+    section#data 
+      h3 Other Statistics
+      p!= `Visit Pages: ${data.pages}`
+      p!= `Mouse Clicks: ${events.mouse.clicks}`
+      p!= `Mouse Move Distance: ${events.mouse.move_distance}px`
+      p!= `Mouse Enter: ${events.mouse.enter}`
+      p!= `Mouse Leave: ${events.mouse.leave}`
+      p!= `Keyboard Pressed: ${events.keyboard.pressed}`
+
+    script(src="/resources/escaped.mjs" type="module")
+

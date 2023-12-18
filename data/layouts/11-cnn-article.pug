@@ -1,0 +1,35 @@
+section#nav
+  .wrapper.row  
+    a#logo(href="")!= site.toUpperCase()
+
+section#main
+  .wrapper
+
+    #title!= title
+
+    #info.row
+      .name!= author
+      .dot &nbsp;·&nbsp;
+      .datetime!= datetime.toDateString()
+
+  .wrapper.row 
+
+    #content
+      
+      #image
+        img(src=`/resources/${site}/image/image.png`)
+
+      #text!= content
+
+    #sidebar
+
+      #list 
+        label!= "MORE FROM " + site
+        each index, i in links
+          if i == 6
+            - break
+          a(href=`/${index.site}`).element.row
+            img(src=`/resources/${index.site}/image/image.png`)
+            p!= index.title
+
+section#footer
