@@ -156,7 +156,6 @@ class Site {
     }
 
     let value = Math.floor(this.random() * 100);
-    console.log(value);
     if (0 <= value && value < 50) {
       return '';
     } else if (50 <= value && value < 80) {
